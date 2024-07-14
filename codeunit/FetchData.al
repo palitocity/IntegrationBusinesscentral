@@ -2,16 +2,7 @@ codeunit 60000 "Fetch Customer List"
 {
 
 
-    //   "id": "RH2982VMCXB5FZJE5Q07QC3QSC",
-    //       "created_at": "2024-05-21T20:35:13.55Z",
-    //       "updated_at": "2024-05-21T20:35:13Z",
-    //       "given_name": "city",
-    //       "family_name": "palitocity",
-    //       "nickname": "palito",
-    //       "email_address": "palitocity@gmail.com",
-    //       "note": "I have ",
-    //       "reference_id": "city",
-    //       "company_name": "Palitovity",
+    
     procedure PostCustomersToAPI()
     var
         Customers: Record Customer;
@@ -54,7 +45,7 @@ codeunit 60000 "Fetch Customer List"
                 HttpHeader.Clear();
                 HttpHeader.Add('Content-Type', 'application/json');
                 HttpClient.DefaultRequestHeaders().Add('Square-Version', '2024-06-04');
-                HttpClient.DefaultRequestHeaders().Add('Authorization', 'Bearer EAAAECW7fh1V0J9oN93jF0-tfw4S-7_fVbENx3649MIfxtbXoW0NA8MfUewYeV23');
+                HttpClient.DefaultRequestHeaders().Add('Authorization', 'Bearer Secret_key');
                 httpRequest.Content := HttpContent;
                 httpRequest.SetRequestUri(Url);
                 httpRequest.Method := 'POST';
@@ -97,7 +88,7 @@ codeunit 60000 "Fetch Customer List"
         url := 'https://connect.squareupsandbox.com/v2/customers';
         Client.Clear();
         Client.DefaultRequestHeaders().Add('Square-Version', '2024-05-15');
-        Client.DefaultRequestHeaders().Add('Authorization', 'Bearer EAAAECW7fh1V0J9oN93jF0-tfw4S-7_fVbENx3649MIfxtbXoW0NA8MfUewYeV23');
+        Client.DefaultRequestHeaders().Add('Authorization', 'Bearer Secret_key');
         isSucessful := Client.Get(url, Response);
         if not isSucessful then Error('Kindly check the url %1', url);
 
